@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants.dart';
@@ -8,7 +7,7 @@ import 'reusable_card.dart';
 import 'bottom_button.dart';
 import 'round_icon_button.dart';
 import 'calculator_brain.dart';
-
+import 'mainmenu.dart';
 
 enum Gender { male, female }
 
@@ -26,12 +25,49 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('BMI CALCULATOR'),
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          Row(
+            children: <Widget>[
+              IconButton(
+                icon: Image.asset(
+                  'images/logo.png',
+                  width: MediaQuery.of(context).size.width * 0.15,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Mainmenu();
+                      },
+                    ),
+                  );
+                },
+              ),
+              TextButton(
+                child: Text(
+                  "Everyday Fitness",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.black,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Mainmenu();
+                      },
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+
           Expanded(
             child: Row(
               children: <Widget>[

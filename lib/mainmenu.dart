@@ -2,6 +2,9 @@ import 'package:fap_everydayfitness/intervaltimer.dart';
 import 'package:flutter/material.dart';
 import 'aboutus.dart';
 import 'intervaltimer.dart';
+import 'input_page.dart';
+import 'todolist.dart';
+
 
 class Mainmenu extends StatefulWidget {
   @override
@@ -120,8 +123,14 @@ class _MainmenuState extends State<Mainmenu> {
                               // Add some spacing between buttons
                               ElevatedButton(
                                   onPressed: () {
-                                    // Handle the action for the third button
-                                    // You can add your code here
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return InputPage();
+                                        },
+                                      ),
+                                    );
                                   },
                                   child: const Text(
                                     'BMI/Calorie Calculator',
@@ -141,8 +150,14 @@ class _MainmenuState extends State<Mainmenu> {
                               // Add some spacing between buttons
                               ElevatedButton(
                                   onPressed: () {
-                                    // Handle the action for the third button
-                                    // You can add your code here
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return Todolist();
+                                        },
+                                      ),
+                                    );
                                   },
                                   child: const Text(
                                     'To Do List',

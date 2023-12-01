@@ -1,4 +1,7 @@
+import 'package:fap_everydayfitness/intervaltimer.dart';
 import 'package:flutter/material.dart';
+import 'aboutus.dart';
+import 'intervaltimer.dart';
 
 class Mainmenu extends StatefulWidget {
   @override
@@ -9,17 +12,33 @@ class _MainmenuState extends State<Mainmenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFFFDEDE),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Row(
             children: <Widget>[
-              Image.asset(
-                'images/logo.png',
-                height: 100,
-                width: 100,
+              IconButton(
+                icon: Image.asset(
+                  'images/logo.png',
+                  width: MediaQuery.of(context).size.width * 0.15,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
-              Text('Everyday Fitness'),
+              TextButton(
+                child: Text(
+                  "Everyday Fitness",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.black,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
             ],
           ),
           // Divider(color: Colors.black,thickness: 1.0, ),
@@ -37,7 +56,12 @@ class _MainmenuState extends State<Mainmenu> {
             children: [
               Center(
                 child: ElevatedButton(
-                  child: const Text('Fitness Tools'),
+                  child: Text(
+                    'Fitness Tools',
+                    style: TextStyle(
+                      color: Colors.black, // Set font color to black
+                    ),
+                  ),
                   onPressed: () {
                     showModalBottomSheet(
                       context: context,
@@ -49,54 +73,125 @@ class _MainmenuState extends State<Mainmenu> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               ElevatedButton(
-                                onPressed: () {
-                                  // Handle the action for the first button
-                                  // You can add your code here
-                                },
-                                child: const Text('Interval Timer'),
-                              ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return IntervalTimer();
+                                        },
+                                      ),
+                                    );
+                                  },
+                                  child: const Text(
+                                    'Interval Timer',
+                                    style: TextStyle(
+                                      color: Colors
+                                          .black, // Set font color to black
+                                    ),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                    ),
+                                    backgroundColor: Color(0xFFC64343),
+                                    elevation: 0,
+                                  )),
                               SizedBox(height: 16),
                               // Add some spacing between buttons
                               ElevatedButton(
-                                onPressed: () {
-                                  // Handle the action for the second button
-                                  // You can add your code here
-                                },
-                                child: const Text('Meal Recipes'),
-                              ),
+                                  onPressed: () {
+                                  },
+                                  child: const Text(
+                                    'Meal Recipes',
+                                    style: TextStyle(
+                                      color: Colors
+                                          .black, // Set font color to black
+                                    ),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                    ),
+                                    backgroundColor: Color(0xFFC64343),
+                                    elevation: 0,
+                                  )),
                               SizedBox(height: 16),
                               // Add some spacing between buttons
                               ElevatedButton(
-                                onPressed: () {
-                                  // Handle the action for the third button
-                                  // You can add your code here
-                                },
-                                child: const Text('BMI/Calorie Calculator'),
-                              ),
+                                  onPressed: () {
+                                    // Handle the action for the third button
+                                    // You can add your code here
+                                  },
+                                  child: const Text(
+                                    'BMI/Calorie Calculator',
+                                    style: TextStyle(
+                                      color: Colors
+                                          .black, // Set font color to black
+                                    ),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                    ),
+                                    backgroundColor: Color(0xFFC64343),
+                                    elevation: 0,
+                                  )),
                               SizedBox(height: 16),
                               // Add some spacing between buttons
                               ElevatedButton(
-                                onPressed: () {
-                                  // Handle the action for the third button
-                                  // You can add your code here
-                                },
-                                child: const Text('To Do List'),
-                              ),
+                                  onPressed: () {
+                                    // Handle the action for the third button
+                                    // You can add your code here
+                                  },
+                                  child: const Text(
+                                    'To Do List',
+                                    style: TextStyle(
+                                      color: Colors
+                                          .black, // Set font color to black
+                                    ),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                    ),
+                                    backgroundColor: Color(0xFFC64343),
+                                    elevation: 0,
+                                  )),
                               SizedBox(height: 16),
                               // Add some spacing between buttons
                               ElevatedButton(
-                                onPressed: () {
-                                  // Handle the action for the Close button
-                                  Navigator.pop(context);
-                                },
-                                child: const Text('Close'),
-                              ),
+                                  onPressed: () {
+                                    // Handle the action for the Close button
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text(
+                                    'Close',
+                                    style: TextStyle(
+                                      color: Colors
+                                          .black, // Set font color to black
+                                    ),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                    ),
+                                    backgroundColor: Color(0xFFC64343),
+                                    elevation: 0,
+                                  )),
                             ],
                           ),
                         );
                       },
                     );
                   },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    backgroundColor: Color(0xFFC64343),
+                    elevation: 0,
+                  ),
                 ),
               ),
             ],
@@ -106,13 +201,25 @@ class _MainmenuState extends State<Mainmenu> {
             children: [
               Center(
                 child: ElevatedButton(
-                  child: Text('About Us'),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    backgroundColor: Color(0xFFC64343),
+                    elevation: 0,
+                  ),
+                  child: Text(
+                    'About Us',
+                    style: TextStyle(
+                      color: Colors.black, // Set font color to black
+                    ),
+                  ),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return Mainmenu();
+                          return Aboutus();
                         },
                       ),
                     );

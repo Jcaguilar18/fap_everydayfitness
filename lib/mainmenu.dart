@@ -1,9 +1,11 @@
 import 'package:fap_everydayfitness/intervaltimer.dart';
+import 'package:fap_everydayfitness/mealrecipes.dart';
 import 'package:flutter/material.dart';
 import 'aboutus.dart';
 import 'intervaltimer.dart';
 import 'input_page.dart';
 import 'todolist.dart';
+import 'mealrecipes.dart';
 
 
 class Mainmenu extends StatefulWidget {
@@ -104,6 +106,14 @@ class _MainmenuState extends State<Mainmenu> {
                               // Add some spacing between buttons
                               ElevatedButton(
                                   onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return Mealrecipes();
+                                        },
+                                      ),
+                                    );
                                   },
                                   child: const Text(
                                     'Meal Recipes',

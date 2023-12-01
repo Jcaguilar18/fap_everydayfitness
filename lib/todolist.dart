@@ -13,7 +13,7 @@ class Todolist extends StatefulWidget {
 class _TodolistState extends State<Todolist> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(backgroundColor: Color(0xFFFFDEDE),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xFFC64343),
         child: Icon(Icons.add),

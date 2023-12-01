@@ -3,6 +3,7 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'Mainmenu.dart';
 
+
 const kRedColor = Color(0xFFC64343);
 const kGreyColor = Color(0xFF6C7589);
 const kBackgroundColor = Color(0xFFFFDEDE);
@@ -37,6 +38,8 @@ class IntervalTimer extends StatelessWidget {
 class CountDownTimer extends StatefulWidget {
   const CountDownTimer({Key? key}) : super(key: key);
 
+
+
   @override
   State<CountDownTimer> createState() => _CountDownTimerState();
 }
@@ -44,6 +47,15 @@ class CountDownTimer extends StatefulWidget {
 final _countDownController = CountDownController();
 
 class _CountDownTimerState extends State<CountDownTimer> {
+  int counter =0;
+  TextEditingController edjin = TextEditingController();
+  
+  @override
+  void initState(){
+    super.initState();
+    edjin.text = '0';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,7 +110,9 @@ class _CountDownTimerState extends State<CountDownTimer> {
             child: Center(
               child: CircularCountDownTimer(
                 controller: _countDownController,
-                duration: 60,
+                autoStart: false,
+                initialDuration: 0,
+                duration: int.parse(edjin.text),
                 isReverse: true,
                 fillColor: kRedColor,
                 height: 250,
@@ -123,7 +137,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
                 strokeCap: StrokeCap.round,
                 isReverseAnimation: true,
                 ringColor: kGreyColor,
-                autoStart: true,
+
                 textStyle: largeTextStyle,
               ),
             ),
@@ -135,19 +149,34 @@ class _CountDownTimerState extends State<CountDownTimer> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Button(
-                text: 'Restart',
-                onPressed: () => _countDownController.start(),
+                text: 'Start',
+                onPressed: () => _countDownController.restart(duration: int.parse(edjin.text)),
               ),
               Button(
                 text: 'Pause',
                 onPressed: () => _countDownController.pause(),
               ),
-              Button(
-                text: 'Resume',
-                onPressed: () => _countDownController.resume(),
-              ),
+
+
+
             ],
-          )
+          ),
+          /////////////////////////
+          TextField(
+            keyboardType: TextInputType.number,
+            controller: edjin,
+
+
+            decoration: InputDecoration(
+              labelText: 'Enter Timer Value (in seconds)',
+            ),
+          ),
+          SizedBox(height: 20),
+          Text(
+            'Current Timer Value: $counter seconds',
+            style: TextStyle(fontSize: 18),
+          ),
+          //////////////////////////
         ],
       ),
     );

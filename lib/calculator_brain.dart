@@ -1,16 +1,41 @@
 import 'dart:math';
+import 'package:fap_everydayfitness/intervaltimer.dart';
+
 import 'calitems.dart';
 
+class CalculatorLife{
+  CalculatorLife({required this.height,required this.age  , required this.weight, required this.gender, required this.pal});
+final int height;
+final int weight;
+final String gender;
+final double pal;
+final int age;
+late double maintenance;
+
+calculateMaintenance() {
+  if (gender == 'male') {
+    maintenance = 10*weight+6.25*height-5*age+5;
+    maintenance = maintenance*pal;
+
+  }
+  if (gender == 'female') {
+    maintenance = 10*weight+6.25*height-5*age-161;
+    maintenance = maintenance*pal;
+
+  }
+  return 'Your Calorie maintenance is: '+maintenance.toStringAsFixed(1);
+}
+}
 
 
 class CalculatorBrain {
-  CalculatorBrain({this.height, required this.weight});
+  CalculatorBrain({required this.height, required this.weight});
 
 
 
-  items item = new items();
+  items item = new items();//to be deleted
 
-  final int height = item.getHeight();
+  final int height;
   final int weight;
   late double _bmi;
 

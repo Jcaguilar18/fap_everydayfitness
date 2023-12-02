@@ -39,3 +39,7 @@ const kBMITextStyle = TextStyle(
 const kBodyTextStyle = TextStyle(
   fontSize: 22,
 );
+
+const kTextStyle = TextStyle(
+  fontSize: 18,
+);

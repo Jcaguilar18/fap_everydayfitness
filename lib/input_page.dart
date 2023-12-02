@@ -19,9 +19,37 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
+  late String sex;
   int height = 180;
   int weight = 60;
   int age = 18;
+  double PAL = 1.2;
+  String activeness = "Little/no exercise";
+
+  String activityLevel(){
+    if (PAL == 1.2){
+      activeness = "Little/no exercise";
+    }
+    else if (PAL > 1.2 && PAL < 1.5){
+      activeness = "Light exercise 1-2 times/week";
+    }
+    else if (PAL > 1.4 && PAL < 1.7){
+      activeness = "Moderate exercise 2-3 times/week";
+    }
+    else if (PAL > 1.6 && PAL < 1.76){
+      activeness = "Hard exercise 3-5 times/week";
+    }
+    else if (PAL > 1.75 && PAL < 2.1){
+      activeness = "Physical job or hard exercise 6-7 times/week";
+    }
+    else if (PAL > 2){
+      activeness = "Professional Athlete";
+    }
+    return activeness;
+  }
+
+
+
   items item = new items();
   @override
   Widget build(BuildContext context) {
@@ -76,6 +104,7 @@ class _InputPageState extends State<InputPage> {
                     onPress: () {
                       setState(() {
                         selectedGender = Gender.male;
+                        sex = 'male';
                       });
                     },
                     color: (selectedGender == Gender.male)
@@ -92,6 +121,7 @@ class _InputPageState extends State<InputPage> {
                     onPress: () {
                       setState(() {
                         selectedGender = Gender.female;
+                        sex='female';
                       });
                     },
                     color: (selectedGender == Gender.female)
@@ -138,9 +168,9 @@ class _InputPageState extends State<InputPage> {
                         thumbColor: Color(0xFFEB1555),
                         overlayColor: Color(0x29EB1555),
                         thumbShape:
-                            RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                        RoundSliderThumbShape(enabledThumbRadius: 15.0),
                         overlayShape:
-                            RoundSliderOverlayShape(overlayRadius: 25.0)),
+                        RoundSliderOverlayShape(overlayRadius: 25.0)),
                     child: Slider(
                       value: height.toDouble(),
                       min: 120,
@@ -265,13 +295,13 @@ class _InputPageState extends State<InputPage> {
                     crossAxisAlignment: CrossAxisAlignment.baseline,
                     textBaseline: TextBaseline.alphabetic,
                     children: <Widget>[
-                      Text(
-                        height.toString(),
-                        style: kNumberTextStyle,
-                      ),
-                      Text(
-                        'cm',
-                        style: kLabelTextStyle,
+                      Expanded(
+                        child: Center(
+                          child: Text(
+                            activityLevel(),
+                            style: kTextStyle,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -286,12 +316,12 @@ class _InputPageState extends State<InputPage> {
                         overlayShape:
                         RoundSliderOverlayShape(overlayRadius: 25.0)),
                     child: Slider(
-                      value: height.toDouble(),
-                      min: 120,
-                      max: 220,
+                      value: PAL,
+                      min: 1.2,
+                      max: 2.4,
                       onChanged: (double newValue) {
                         setState(() {
-                          height = newValue.round();
+                          PAL = newValue;
                         });
                       },
                     ),
@@ -303,15 +333,17 @@ class _InputPageState extends State<InputPage> {
           BottomButton(
             onTap: () {
               CalculatorBrain calc =
-                  CalculatorBrain(height: height, weight: weight);
+              CalculatorBrain(height: height, weight: weight);
+              CalculatorLife calcl = CalculatorLife(height: height, age: age, weight: weight, gender: sex , pal: PAL);
               Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => ResultsPage(
-                            bmiResult: calc.calculateBMI(),
-                            resultText: calc.getResult(),
-                            interpretation: calc.getInterpretation(),
-                          )));
+                        bmiResult: calc.calculateBMI(),
+                        resultText: calc.getResult(),
+                        interpretation: calc.getInterpretation(),
+                        lifes: calcl.calculateMaintenance() ,
+                      )));
             },
             buttonTitle: 'CALCULATE',
           ),

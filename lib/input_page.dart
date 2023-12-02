@@ -339,10 +339,10 @@ class _InputPageState extends State<InputPage> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => ResultsPage(
-                        bmiResult: calc.calculateBMI(),
+                        bmiResult: calc.calculate(),
                         resultText: calc.getResult(),
                         interpretation: calc.getInterpretation(),
-                        lifes: calcl.calculateMaintenance() ,
+                        lifes: calcl.calculate() ,
                       )));
             },
             buttonTitle: 'CALCULATE',

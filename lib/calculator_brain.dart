@@ -3,8 +3,8 @@ import 'package:fap_everydayfitness/intervaltimer.dart';
 
 import 'calitems.dart';
 
-class CalculatorLife{
-  CalculatorLife({required this.height,required this.age  , required this.weight, required this.gender, required this.pal});
+class CalculatorLife extends CalculatorBrain{
+  CalculatorLife({required this.height, required this.age  , required this.weight, required this.gender, required this.pal}) : super(height: height, weight: weight);
 final int height;
 final int weight;
 final String gender;
@@ -12,7 +12,7 @@ final double pal;
 final int age;
 late double maintenance;
 
-calculateMaintenance() {
+calculate() {
   if (gender == 'male') {
     maintenance = 10*weight+6.25*height-5*age+5;
     maintenance = maintenance*pal;
@@ -42,7 +42,7 @@ class CalculatorBrain {
 
 
 
-  String calculateBMI() {
+  String calculate() {
     _bmi = weight / pow(height / 100, 2);
     return _bmi.toStringAsFixed(1);
   }

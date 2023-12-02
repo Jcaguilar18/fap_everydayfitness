@@ -8,6 +8,7 @@ import 'bottom_button.dart';
 import 'round_icon_button.dart';
 import 'calculator_brain.dart';
 import 'mainmenu.dart';
+import 'calitems.dart';
 
 enum Gender { male, female }
 
@@ -21,10 +22,10 @@ class _InputPageState extends State<InputPage> {
   int height = 180;
   int weight = 60;
   int age = 18;
-
+  items item = new items();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(backgroundColor: Color(0xFFFFDEDE),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -67,7 +68,6 @@ class _InputPageState extends State<InputPage> {
               ),
             ],
           ),
-
           Expanded(
             child: Row(
               children: <Widget>[
@@ -148,6 +148,7 @@ class _InputPageState extends State<InputPage> {
                       onChanged: (double newValue) {
                         setState(() {
                           height = newValue.round();
+                          item.setHeight(height);
                         });
                       },
                     ),
@@ -156,6 +157,7 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
           ),
+
           Expanded(
             child: Row(
               children: <Widget>[
@@ -181,6 +183,7 @@ class _InputPageState extends State<InputPage> {
                               onPressed: () {
                                 setState(() {
                                   weight--;
+                                  item.setWeight(weight);
                                 });
                               },
                             ),
@@ -192,6 +195,7 @@ class _InputPageState extends State<InputPage> {
                               onPressed: () {
                                 setState(() {
                                   weight++;
+                                  item.setWeight(weight);
                                 });
                               },
                             ),
@@ -246,6 +250,56 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
+          Expanded(
+            child: ReusableCard(
+              color: kActiveCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'LIFESTYLE (activeness)',
+                    style: kLabelTextStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: <Widget>[
+                      Text(
+                        height.toString(),
+                        style: kNumberTextStyle,
+                      ),
+                      Text(
+                        'cm',
+                        style: kLabelTextStyle,
+                      ),
+                    ],
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                        activeTrackColor: Colors.white,
+                        inactiveTrackColor: Color(0xFF8F8E98),
+                        thumbColor: Color(0xFFEB1555),
+                        overlayColor: Color(0x29EB1555),
+                        thumbShape:
+                        RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                        overlayShape:
+                        RoundSliderOverlayShape(overlayRadius: 25.0)),
+                    child: Slider(
+                      value: height.toDouble(),
+                      min: 120,
+                      max: 220,
+                      onChanged: (double newValue) {
+                        setState(() {
+                          height = newValue.round();
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
           BottomButton(
             onTap: () {
               CalculatorBrain calc =
@@ -265,4 +319,5 @@ class _InputPageState extends State<InputPage> {
       ),
     );
   }
+
 }

@@ -110,7 +110,7 @@ class _MainmenuState extends State<Mainmenu> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return Mealrecipes();
+                                          return MealRecipe();
                                         },
                                       ),
                                     );

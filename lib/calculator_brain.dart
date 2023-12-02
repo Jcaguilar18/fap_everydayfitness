@@ -1,11 +1,21 @@
 import 'dart:math';
+import 'calitems.dart';
+
+
 
 class CalculatorBrain {
-  CalculatorBrain({required this.height, required this.weight});
+  CalculatorBrain({this.height, required this.weight});
 
-  final int height;
+
+
+  items item = new items();
+
+  final int height = item.getHeight();
   final int weight;
   late double _bmi;
+
+
+
 
   String calculateBMI() {
     _bmi = weight / pow(height / 100, 2);

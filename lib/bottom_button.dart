@@ -17,9 +17,8 @@ class BottomButton extends StatelessWidget {
         ),
         color: kBottomContainerColor,
         margin: EdgeInsets.only(top: 10.0),
-        padding: EdgeInsets.only(bottom: 20.0),
         width: double.infinity,
-        height: kBottomContainerHeight,
+        height: MediaQuery.of(context).size.width * 0.1,
       ),
     );
   }

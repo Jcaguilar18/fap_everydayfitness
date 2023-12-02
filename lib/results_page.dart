@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'reusable_card.dart';
 import 'bottom_button.dart';
+import 'values.dart';
 
 
 class ResultsPage extends StatelessWidget {
@@ -14,6 +15,7 @@ class ResultsPage extends StatelessWidget {
   final String resultText;
   final String interpretation;
   final String lifes;
+  Values values = Values();
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +56,21 @@ class ResultsPage extends StatelessWidget {
                     style: kBodyTextStyle,
                     textAlign: TextAlign.center,
                   ),
+
+                  Text(
+                  'Your inputted Values: ' +'Gender:'+ values.getGender +' Height:'+ values.getHeight.toString()
+                      +' Age:'+ values.getAge.toString() + ' Weight:'+values.getWeight.toString()
+                   +' Fitness level:'   + values.getPal.toString(), style: TextStyle(fontSize: 20),textAlign: TextAlign.center
+                  ),
+
+                  Text(
+                    'Your Calorie Maintance: ',
+                    style: kBodyTextStyle,
+                    textAlign: TextAlign.center,
+                  ),
                   Text(
                     lifes,
-                    style: kBodyTextStyle,
+                    style: TextStyle(fontSize: 35),
                     textAlign: TextAlign.center,
                   ),
                 ],

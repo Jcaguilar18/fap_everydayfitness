@@ -23,7 +23,7 @@ calculate() {
     maintenance = maintenance*pal;
 
   }
-  return 'Your Calorie maintenance is: '+maintenance.toStringAsFixed(1);
+  return maintenance.toStringAsFixed(1);
 }
 }
 

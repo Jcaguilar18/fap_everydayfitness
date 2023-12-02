@@ -9,6 +9,7 @@ import 'round_icon_button.dart';
 import 'calculator_brain.dart';
 import 'mainmenu.dart';
 import 'calitems.dart';
+import 'values.dart';
 
 enum Gender { male, female }
 
@@ -332,6 +333,12 @@ class _InputPageState extends State<InputPage> {
           ),
           BottomButton(
             onTap: () {
+              Values values = Values();
+              values.setPal(PAL);
+              values.setAge(age);
+              values.setWeight(weight);
+              values.setHeight(height);
+              values.setGender(sex);
               CalculatorBrain calc =
               CalculatorBrain(height: height, weight: weight);
               CalculatorLife calcl = CalculatorLife(height: height, age: age, weight: weight, gender: sex , pal: PAL);

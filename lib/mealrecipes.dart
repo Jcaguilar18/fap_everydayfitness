@@ -20,10 +20,8 @@ class _MealRecipeState extends State<MealRecipe> {
 
   void navigateToRandomScreen() {
     // Get a random index to select a screen from the list
-    int randomIndex = Random().nextInt(screens.length);
+    int randomIndex = Random().nextInt(screens.length-1);
     String selectedScreen = screens[randomIndex];
-
-
     // Navigate to the selected screen
     Navigator.pushNamed(context, '/$selectedScreen');
   }
